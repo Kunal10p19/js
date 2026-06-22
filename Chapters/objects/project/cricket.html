@@ -43,6 +43,12 @@
      <script>
     //let computerChoice;
 
+    let score = {
+        win: 0,
+        lost: 0,
+        tie: 0,
+    };
+
     function generatecomputerchoice(){
 
         let randomNumber = Math.random() * 3;
@@ -61,37 +67,51 @@
     function getResult(usermove, computermove){
         if(usermove === 'Bat'){
             if (computermove === 'Ball') {
+                score.win++;
             return 'User won';
         } else if (computermove === 'Bat') {
+            score.tie++;
             return 'It is a tie';
         } else if (computermove === 'Stump') {
+            score.lost++;
             return 'Computer won';
         }
         }
 
         else if(usermove === 'Ball'){
              if (computermove === 'Ball') {
+                score.tie++;
             return 'It is a tie';
         } else if (computermove === 'Bat') {
+            score.lost++;
             return 'Computer won';
         } else if (computermove === 'Stump') {
+            score.win++;
             return 'User won';
         }
         }
 
         else{
             if (computermove === 'Ball') {
+                score.lost++;
             return 'Computer won';
         } else if (computermove === 'Bat') {
+            score.win++;
             return 'User won';
         } else if (computermove === 'Stump') {
+            score.tie++;
             return 'It is a tie';
         }
         }
     }
 
     function showresult(usermove, computermove, result){
-        alert(`You have chosen ${usermove}. Computer choice is ${computermove} and ${result}`);
+        console.log(score);
+        alert(`You have chosen ${usermove}. Computer choice is ${computermove}
+        
+        ${result}
+        
+        Win: ${score.win}, Lost: ${score.lost}, Tie: ${score.tie}`);
     }
  </script>
     
